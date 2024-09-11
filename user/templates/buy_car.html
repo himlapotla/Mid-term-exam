@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Confirm Purchase</h2>
+    <div class="card" style="width: 18rem;">
+        <img src="{{carr.car_image.url}}" class="card-img-top" alt="{{carr.car_name}}">
+        <div class="card-body">
+            <h5 class="card-title">{{carr.car_name}}</h5>
+            <p class="card-text">{{carr.car_description}}</p>
+            <p class="card-text"><strong>Price:</strong> {{carr.car_price}}</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Confirm Purchase</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %} 

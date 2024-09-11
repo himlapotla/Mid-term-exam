@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<h1> profile page </h1>
+
+<form method="post" style="width:50% ; margin : auto">
+    {{form | crispy}}
+</form>
+
+<h2>Purchased Cars</h2>
+<div class="row container d-flex  align-items-center justify-content-center">
+    {% for car in purchased_cars %}
+    <div class="col-md-3 mb-4">
+      <div class="card" style="width: 100%;">
+        <img src="{{car.car.car_image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4 class="card-title">Car name: {{car.car.car_name}}</h4>
+          <h5 class="card-text">About the car: {{car.car.car_description | truncatewords:7}}<h5>
+          <h5 class="card-text">Price: {{car.car.car_price}}<h5>
+          <h5 class="card-text">Brand: {{car.car.car_brand}}<h5>
+          <h5 class="card-text">Brought by: {{car.user}}<h5>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+        <li>No cars purchased yet.</li>
+    {% endfor %}
+  </div>
+
+
+
+
+
+{% endblock %}
+
+
